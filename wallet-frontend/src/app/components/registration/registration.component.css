@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  input[type=text],[type=password], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+  
+
+  
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 50px;
+    margin: 125px 50px 50px 50px ;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 15%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 85%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+ 
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  #heading{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 30px;
+
+  }
+
+  #registerbtn{
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+  }
+
+  #btn1{
+    background-color: #19b3c791;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    margin-top: 8px;
+    font-size: large;
+  }
+
+
+  #btn1:hover{
+    background-color: #0e6394;
+
+  }
+
+  #email{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+
+  }
+
+  #form{
+    padding: 30px;
+  }
+
+  #togglePassword {
+    margin-left: -30px;
+    cursor: pointer;
+  }

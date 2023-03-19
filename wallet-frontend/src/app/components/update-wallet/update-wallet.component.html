@@ -1,0 +1,22 @@
+<div class="container">
+
+<form>
+    Id:
+    <input type="text" [(ngModel)]="wallet.id" name="id" id = "id" disabled>
+    Name:
+    <input type="text" [(ngModel)]="wallet.name" name="name" id = "name" >
+    Balance:
+    <input type="number" [(ngModel)]="wallet.balance" name="balance" id = "balance" > 
+    <div id="btn">
+    <input type="button" (click)="updateWallet()" value="Update" id="btnId">
+    </div>
+
+    <div *ngIf="msg" class="alert alert-success" >
+        <p class="">{{msg}}</p>
+    </div>
+    <div *ngIf="errorMsg" class="alert alert-danger">
+        <p>{{errorMsg}}</p> 
+    </div>
+
+</form>
+</div>

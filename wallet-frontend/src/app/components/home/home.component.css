@@ -1,0 +1,34 @@
+#heading{
+    justify-content: left;
+    display: flex;
+    margin-bottom: 30px;
+
+  }
+
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 50px;
+    margin: 110px 50px 50px 50px ;
+    height: 550px;
+
+  }
+
+  #Img{
+    float: right;
+  }
+
+  #para{
+    width: 500px;
+    color: rgba(0, 0, 0, 0.521);
+    float: left;
+    font-size: 18px;
+    text-align: justify;
+  }
+
+  #dv{
+    align-items: center;
+    justify-content: center;
+  }
+
+ 

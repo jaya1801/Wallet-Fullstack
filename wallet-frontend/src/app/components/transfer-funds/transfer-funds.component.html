@@ -1,0 +1,22 @@
+<div class="container">
+
+<form>
+    Id:
+    <input type="text" [(ngModel)]="fromId" name="fromId" id = "fromId" disabled>
+    To:
+    <input type="text" [(ngModel)]="toId" name="toId" id = "toId" >
+    Amount:
+    <input type="number" [(ngModel)]="amount" name="amount" id = "amount" > 
+    <div id="btn">
+    <input type="button" (click)="transferFunds()" value="Transfer" id="btnId">
+    </div>
+
+    <div *ngIf="msg" class="alert alert-success" >
+        <p class="">{{msg}}</p>
+    </div>
+    <div *ngIf="errorMsg" class="alert alert-danger">
+        <p>{{errorMsg}}</p> 
+    </div>
+
+</form>
+</div>

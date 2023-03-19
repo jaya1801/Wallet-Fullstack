@@ -1,0 +1,50 @@
+
+<div class="container">
+ <div id="heading"> <h1><b>LOGIN </b></h1> </div>
+  <form #userForm="ngForm">
+
+    <div class="row">
+      <div class="col-25">
+        <label for="userName">Username:</label>
+      </div>
+
+     
+      <div class="col-75">
+        <input type="text" [(ngModel)]="login.userName" #nameRef="ngModel" name="username" id="userName"
+          pattern="[A-Za-z ]{3,}" title="Only chars are allowed,Min 3 char required" required>
+        <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
+          <p *ngIf="nameRef.errors?.['required']" class="text-danger">Name is required, cant be balnk.</p>
+          <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Name must have at least 3 chars, only chars are
+            allowed.</p>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="row">
+      <div class="col-25">
+        <label for="password">Password:</label>
+      </div>
+      <div class="col-75">
+        <input [type]="show_button ? 'text' : 'password'" [(ngModel)]="login.password" #passwordRef="ngModel"
+          name="password" id="password" pattern="[a-zA-Z0-9]{5,}" required>
+        <i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" id="togglePassword" (click)=eyeToggle()></i>
+        <div *ngIf="passwordRef.invalid && (passwordRef.touched || passwordRef.dirty)">
+          <p *ngIf="passwordRef.errors?.['required']" class="text-danger">Password is required, cant be balnk.</p>
+          <p *ngIf="passwordRef.errors?.['pattern']" class="text-danger">Password must be at least 5 chars.</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="errorMsg" class="alert alert-danger">
+      <p>{{errorMsg}}</p> 
+    </div>
+    
+
+    <div class="row" id="loginbtn">
+      <input type="submit" (click)="submitLoginForm()" [disabled]="!userForm.valid" value="LogIn" id="btn1">
+    </div>
+    <div id="anchor">
+      <pre>Not Registered? <a href="http://localhost:4200/registration"><b>Register</b></a></pre>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+    <div id='heading'>
+        <H1> <b>ALL WALLETS</b> </H1>
+    </div>
+    
+    <br>
+    <h5>   Search Wallet  </h5>
+    <input type="text" [(ngModel)]="query" id="queryId" name="query" placeholder="Enter name/id">
+    <br>
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th (click)="changeSortByFiled('id')">Id</th>
+                <th (click)="changeSortByFiled('name')">Name</th>
+                <th (click)="changeSortByFiled('balance')">Balance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let wallet of wallets | search:query | sort : field :'asc'">
+                <td>{{wallet.id}}</td>
+                <td>{{wallet.name}}</td>
+                <td>{{wallet.balance}}</td>
+                <td>
+                <div id="btn">
+                    <input type="button" class="btn btn-success" (click)="addFunds(wallet)" value="Add">
+                    <input type="button" class="btn btn-primary" (click)="withdrawFunds(wallet)" value="Withdraw">
+                    <input type="button" class="btn btn-warning" (click)="transferFunds(wallet)" value="Transfer">
+                    <input type="button" class="btn btn-info" (click)="updateWallet(wallet)" value="Update">
+                    <input type="button" class="btn btn-danger" (click)="deleteWallet(wallet)" value="Delete">
+                </div>    
+                    
+                </td>
+               
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div *ngIf="msg" class="alert alert-success" >
+        <p class="">{{msg}}</p>
+    </div>
+    <div *ngIf="errorMsg" class="alert alert-danger">
+        <p>{{errorMsg}}</p> 
+    </div>
+ 
+</div>
+

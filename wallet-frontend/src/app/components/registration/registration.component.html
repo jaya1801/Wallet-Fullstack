@@ -1,0 +1,56 @@
+<div class="container">
+   <div id="heading"> <h1><b>REGISTER</b></h1> </div>
+    <br>
+    <form #userForm="ngForm" id="form">
+      <div class="row">
+        <div class="col-25">
+      <label for="userName">Username:</label>
+        </div>
+        <div class="col-75">
+      <input type="text" [(ngModel)]="register.userName" #nameRef="ngModel" name="userName" id="userName" pattern="[A-Za-z ]{3,}"title="Only chars are allowed,Min 3 char required" required>
+      <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
+        <p *ngIf="nameRef.errors?.['required']" class="text-danger">UserName is required, cant be balnk.</p>
+        <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">UserName must have at least 3 chars, only chars are
+          allowed.</p>
+      </div>
+        </div>
+      </div>
+      <br>
+    
+      <div class="row">
+      <div class="col-25">
+      <label for="email">Email:</label>
+      </div>
+      <div class="col-75">
+      <input type="email" [(ngModel)]="register.email" #emailRef="ngModel" name="email" id="email" email="true" required>
+      <div *ngIf="emailRef.invalid && (emailRef.touched || emailRef.dirty)">
+        <p *ngIf="emailRef.errors?.['required']" class="text-danger">Email is required, cant be balnk.</p>
+        <p *ngIf="emailRef.errors?.['email']" class="text-danger">
+        Email address is not valid.</p>
+      </div>
+    </div>
+      </div>
+      
+      <br>
+
+      <div class="row">
+      <div class="col-25">
+      <label for="password">Password:</label>
+      </div>
+      <div class="col-75">
+        <input [type]="show_button ? 'text' : 'password'" [(ngModel)]="register.password" #passwordRef="ngModel"
+        name="password" id="password" pattern="[a-zA-Z0-9]{5,}" required>
+      <i [class]="show_eye ? 'fa fa-eye' : 'fa fa-eye-slash'" id="togglePassword" (click)=eyeToggle()></i>
+      <div *ngIf="passwordRef.invalid && (passwordRef.touched || passwordRef.dirty)">
+        <p *ngIf="passwordRef.errors?.['required']" class="text-danger">Password is required, cant be balnk.</p>
+        <p *ngIf="passwordRef.errors?.['pattern']" class="text-danger">Password must be at least 5 chars.</p>
+      </div>
+      </div>
+    </div>
+    
+      <br>
+      <div class="row" id="registerbtn">
+      <input type="submit" (click)="displayForm()" [disabled]="!userForm.valid" value="Register" id="btn1">
+    </div>
+       </form>
+  </div>
