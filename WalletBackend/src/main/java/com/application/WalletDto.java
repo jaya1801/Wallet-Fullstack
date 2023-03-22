@@ -21,13 +21,16 @@ public class WalletDto {
     private String name;
     private Double balance;
 
+    private String username;
+
     public WalletDto() {
     }
 
-    public WalletDto(Integer id, String name, Double balance) {
+    public WalletDto(Integer id, String name, Double balance,String username) {
         this.id = id;
         this.name = name;
         this.balance = balance;
+        this.username = username;
     }
 
     public Integer getId() {
@@ -54,16 +57,21 @@ public class WalletDto {
         this.balance = balance;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
-        return "WalletDto {" +
+        return "WalletDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", balance=" + balance +
+                ", username='" + username + '\'' +
                 '}';
     }
-
-
-
-
 }

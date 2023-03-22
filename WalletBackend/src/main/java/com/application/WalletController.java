@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 //localhost:8090/swagger-ui.html
 @RestController
@@ -35,6 +34,12 @@ public class WalletController {
     @GetMapping("/wallet/{id}")
     public WalletDto getWalletById(@PathVariable Integer id) throws WalletException {
         WalletDto wallet = walletService.getWalletById(id);
+        return wallet;
+    }
+
+    @GetMapping("/wallet/user/{username}")
+    public List<WalletDto> getWalletByUsername(@PathVariable String username) throws WalletException {
+        List<WalletDto> wallet = walletService.getWalletByUsername(username);
         return wallet;
     }
 

@@ -28,6 +28,14 @@ public class WalletServiceImpl implements WalletService {
         return walletOptional.get();
     }
 
+    @Override
+    public List<WalletDto> getWalletByUsername(String username) throws WalletException {
+        List<WalletDto> walletOptional = walletRepository.findByUsername(username);
+        if(walletOptional==null)
+            throw new WalletException("Wallet Id does not exists.");
+        return walletOptional;
+    }
+
 
     @Override
     public WalletDto updateWallet(WalletDto wallet,Integer id) throws WalletException {

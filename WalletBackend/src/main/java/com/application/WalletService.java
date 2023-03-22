@@ -7,6 +7,7 @@ public interface WalletService {
 
     WalletDto registerWallet(WalletDto wallet);
     WalletDto getWalletById(Integer walletId) throws WalletException;
+    List<WalletDto> getWalletByUsername(String username) throws WalletException;
     WalletDto updateWallet(WalletDto wallet,Integer id)throws WalletException;
     WalletDto deleteWalletById(Integer walletId)throws WalletException;
 
