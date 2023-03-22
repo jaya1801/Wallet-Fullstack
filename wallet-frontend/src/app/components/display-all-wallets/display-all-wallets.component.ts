@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { WalletService } from 'src/app/service/wallet.service';
 import { WalletBackendService } from 'src/app/service/wallet-backend.service';
 import Swal from 'sweetalert2';
+import { Register } from 'src/app/Model/register';
 
 @Component({
   selector: 'app-display-all-wallets',
@@ -20,39 +21,57 @@ export class DisplayAllWalletsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (localStorage.getItem('auth') == "false") {
-      Swal.fire({
-        title: 'Not Authorised!',
-        text: "Please Login to access!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Login'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.router.navigateByUrl("login");
-        }
-        else {
-          Swal.fire('Not Logged in!!! \n Redirected to Home Page.....', '', 'info')
-          this.router.navigateByUrl("home");
-        }
-      });
-    }
+    // if (localStorage.getItem('auth') == "false") {
+    //   Swal.fire({
+    //     title: 'Not Authorised!',
+    //     text: "Please Login to access!",
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#3085d6',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'Login'
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       this.router.navigateByUrl("login");
+    //     }
+    //     else {
+    //       Swal.fire('Not Logged in!!! \n Redirected to Home Page.....', '', 'info')
+    //       this.router.navigateByUrl("home");
+    //     }
+    //   });
+    //}
    
-    this.walletBackendService.getAllWallets().subscribe(
-      {
-        next: (data) => {
-          console.log(data);
-          this.wallets = data;
-        },
-        error: (err) => {
-          console.log(err);
+    const user:Register = JSON.parse(""+sessionStorage.getItem('user'));
+    if(user && user.role != "admin") {
+      this.walletBackendService.getWalletByUsername(""+user.username).subscribe(
+        {
+          next: (data) => {
+            console.log(data);
+            this.wallets = data;
+          },
+          error: (err) => {
+            console.log(err);
 
-        },
-        complete: () => { }
-      }
-    )
+          },
+          complete: () => { }
+        }
+      )
+    }
+    else {
+      this.walletBackendService.getAllWallets().subscribe(
+        {
+          next: (data) => {
+            console.log(data);
+            this.wallets = data;
+          },
+          error: (err) => {
+            console.log(err);
+
+          },
+          complete: () => { }
+        }
+      )
+    }
   }
 
   deleteWallet(wallet:Wallet){
@@ -96,6 +115,16 @@ export class DisplayAllWalletsComponent implements OnInit {
     changeSortByFiled(field:string){
       console.log(field);
       this.field = field;
+    }
+
+    checkRole():string{
+      let role = sessionStorage.getItem("role");
+  
+      switch(role){
+        case "user":return "user"
+        case "admin":return "admin"
+        default:return "public"
+      }
     }
   
 

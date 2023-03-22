@@ -9,7 +9,7 @@ import { Register } from '../Model/register';
 export class WalletService implements OnInit{
 
   wallets: Wallet[] = [];
-  users: Register[] = [{ userName: "user", email: "user123@gmail.com", password: "password" }];
+  users: Register[] = [{ username: "user", email: "user123@gmail.com", password: "password" }];
 
   constructor() { }
 
@@ -30,7 +30,7 @@ export class WalletService implements OnInit{
 
     authenticateUser(newLogin: LogIn) {
       const user = this.users.find((obj) => {
-        if (obj.userName == newLogin.userName && obj.password == newLogin.password) {
+        if (obj.username == newLogin.username && obj.password == newLogin.password) {
           return true;
         }
         else {

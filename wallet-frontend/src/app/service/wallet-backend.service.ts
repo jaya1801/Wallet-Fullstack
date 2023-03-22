@@ -20,6 +20,10 @@ export class WalletBackendService {
     return this.httpClient.get('http://localhost:8090/v1/wallet/' +id);
   }
 
+  getWalletByUsername(username:string|null):Observable<any>{
+    return this.httpClient.get('http://localhost:8090/v1/wallet/user/' +username);
+  }
+
   deleteWalletById(id:string|null):Observable<any>{
     return this.httpClient.delete("http://localhost:8090/v1/wallet/"+id);
   }

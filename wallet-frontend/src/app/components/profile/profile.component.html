@@ -1,0 +1,15 @@
+
+<div class="container">
+    <div id="icon">
+        <img [src]="imageSrc" height="170px" id="Img">
+    </div>
+   
+    <form>
+        Username:
+        <input type="text" [(ngModel)]="user.username" name="username" id = "username" readonly>
+        Email:
+        <input type="email" [(ngModel)]="user.email" name="email" id = "email" readonly>
+        Profile:
+        <input type="text" [(ngModel)]="user.role" name="role" id = "role" readonly>   
+    </form>
+    </div>

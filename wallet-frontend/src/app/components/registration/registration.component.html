@@ -4,13 +4,13 @@
     <form #userForm="ngForm" id="form">
       <div class="row">
         <div class="col-25">
-      <label for="userName">Username:</label>
+      <label for="username">Username:</label>
         </div>
         <div class="col-75">
-      <input type="text" [(ngModel)]="register.userName" #nameRef="ngModel" name="userName" id="userName" pattern="[A-Za-z ]{3,}"title="Only chars are allowed,Min 3 char required" required>
+      <input type="text" [(ngModel)]="register.username" #nameRef="ngModel" name="username" id="userName" pattern="[A-Za-z0-9]{3,}"title="Only chars and numbers are allowed,Min 3 char required" required>
       <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
-        <p *ngIf="nameRef.errors?.['required']" class="text-danger">UserName is required, cant be balnk.</p>
-        <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">UserName must have at least 3 chars, only chars are
+        <p *ngIf="nameRef.errors?.['required']" class="text-danger">Username is required, cant be balnk.</p>
+        <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Username must have at least 3 chars, only chars and numbers are
           allowed.</p>
       </div>
         </div>

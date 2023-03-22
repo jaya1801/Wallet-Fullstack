@@ -8,15 +8,35 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
+  role:string | null ="user" ;
+
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
-    localStorage.setItem('auth', 'false');
+   // localStorage.setItem('auth', 'false');
+
+    console.log("Role check!");
+    
+    this.role = sessionStorage.getItem("role");
   }
 
   constructor(public router: Router) { }
   title = 'wallet-frontend';
 
   logout() {
-    localStorage.setItem('auth', 'false');
+   // localStorage.setItem('auth', 'false');
+
+    console.log("User Logout!");
+    sessionStorage.clear();    
+    this.role =sessionStorage.getItem("role");
+  }
+
+  checkRole():string{
+    let role = sessionStorage.getItem("role");
+
+    switch(role){
+      case "user":return "user"
+      case "admin":return "admin"
+      default:return "public"
+    }
   }
 }

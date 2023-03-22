@@ -13,13 +13,14 @@ import { UpdateWalletComponent } from './components/update-wallet/update-wallet.
 import { LoginComponent } from './components/login/login.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { DeleteWalletComponent } from './components/delete-wallet/delete-wallet.component';
 import { AddFundsComponent } from './components/add-funds/add-funds.component';
 import { WithdrawFundsComponent } from './components/withdraw-funds/withdraw-funds.component';
 import { TransferFundsComponent } from './components/transfer-funds/transfer-funds.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     AddFundsComponent,
     WithdrawFundsComponent,
     TransferFundsComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <ul class="navbar-nav">
     
     <li class="nav-item"><a routerLink="home" class="nav-link"><b>Home</b></a></li>
@@ -11,4 +11,50 @@
   </ul>
 </nav>
 
+<router-outlet></router-outlet>-->
+
+<!-- public menu -->
+<div *ngIf="checkRole() == 'public'">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <ul class="navbar-nav">
+    <li class="nav-item"><a routerLink="home" class="nav-link"><b>Home</b></a></li>
+    <li class="nav-item"><a routerLink="registration" class="nav-link"><b>Register</b></a></li>
+    <li class="nav-item"><a routerLink="login" class="nav-link"><b>LogIn</b></a></li>
+      
+
+    </ul>
+  </nav>
+
+</div>
+
+<!-- user menu -->
+<div *ngIf="checkRole() =='user'">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a routerLink="home" class="nav-link"><b>Home</b></a></li>
+      <li class="nav-item"><a routerLink="/profile" class="nav-link"><b>Profile</b> </a></li>
+      <li class="nav-item"><a routerLink="registerWallet" class="nav-link"><b>Create-Wallet</b></a></li>
+      <li class="nav-item"><a routerLink="/wallets" class="nav-link"><b>Display-Wallets</b></a></li>
+      <li class="nav-item" id="logout1"><a class="nav-link" (click)="logout()" routerLink="home"><b>Logout</b></a></li>
+
+    </ul>
+  </nav>
+
+</div>
+
+<!-- admin menu -->
+<div *ngIf="checkRole() =='admin'">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <ul class="navbar-nav">
+    <li class="nav-item"><a routerLink="home" class="nav-link"><b>Home</b></a></li>
+    <li class="nav-item"><a routerLink="/profile" class="nav-link"><b>Profile</b> </a></li>
+    <li class="nav-item"><a routerLink="registration" class="nav-link"><b>Register</b></a></li>
+    <li class="nav-item"><a routerLink="login" class="nav-link"><b>LogIn</b></a></li>
+    <li class="nav-item"><a routerLink="registerWallet" class="nav-link"><b>Create-Wallet</b></a></li>
+    <li class="nav-item"><a routerLink="/wallets" class="nav-link"><b>Display-Wallets</b></a></li>
+    <li class="nav-item" id="logout"><a class="nav-link" (click)="logout()" routerLink="home"><b>Logout</b></a></li>
+    </ul>
+  </nav>
+
+</div>
 <router-outlet></router-outlet>

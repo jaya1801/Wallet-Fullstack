@@ -15,6 +15,7 @@
                 <th (click)="changeSortByFiled('id')">Id</th>
                 <th (click)="changeSortByFiled('name')">Name</th>
                 <th (click)="changeSortByFiled('balance')">Balance</th>
+                <th *ngIf="checkRole() =='admin'">Username</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{wallet.id}}</td>
                 <td>{{wallet.name}}</td>
                 <td>{{wallet.balance}}</td>
+                <td *ngIf="checkRole() =='admin'">{{wallet.username}}</td>
                 <td>
                 <div id="btn">
                     <input type="button" class="btn btn-success" (click)="addFunds(wallet)" value="Add">

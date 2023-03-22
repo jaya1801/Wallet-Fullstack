@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Register } from 'src/app/Model/register';
 import { Wallet } from 'src/app/Model/wallet';
 import { WalletBackendService } from 'src/app/service/wallet-backend.service';
 import { WalletService } from 'src/app/service/wallet.service';
@@ -18,31 +19,33 @@ export class RegisterWalletComponent {
 
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
-    if (localStorage.getItem('auth') == "false") {
-      Swal.fire({
-        title: 'Not Authorised!',
-        text: "Please Login to access!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Login'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.router.navigateByUrl("login");
-        }
-        else {
-          Swal.fire('Not Logged in!!! \n Redirected to Home Page.....', '', 'info')
-          this.router.navigateByUrl("home");
-        }
-      });
-    }
+    // if (localStorage.getItem('auth') == "false") {
+    //   Swal.fire({
+    //     title: 'Not Authorised!',
+    //     text: "Please Login to access!",
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#3085d6',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'Login'
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       this.router.navigateByUrl("login");
+    //     }
+    //     else {
+    //       Swal.fire('Not Logged in!!! \n Redirected to Home Page.....', '', 'info')
+    //       this.router.navigateByUrl("home");
+    //     }
+    //   });
+    // }
   }
 
   
   onSubmit(){
     console.log(this.wallet);
-    this.walletBackendService.addWallet(this.wallet);
+    //this.walletBackendService.addWallet(this.wallet);
+    const user:Register = JSON.parse(""+sessionStorage.getItem('user'));
+    this.wallet.username = ""+user.username;
 
     let empPost: Observable<any> =this.walletBackendService.addWallet(this.wallet);
     empPost.subscribe(
@@ -59,7 +62,7 @@ export class RegisterWalletComponent {
       }
     )
 
-    this.router.navigateByUrl("/wallets");
+    setTimeout(()=>{this.router.navigateByUrl("/wallets");},1000);
   }
 
   

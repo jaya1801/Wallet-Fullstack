@@ -1,3 +1,3 @@
 export class Wallet{
-    constructor(public id?:Number,public name?:string,public balance?:Number,public amount?:Number){}
+    constructor(public id?:Number,public name?:string,public balance?:Number,public amount?:Number,public username?:string){}
 }
